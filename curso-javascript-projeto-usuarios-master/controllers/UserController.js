@@ -156,29 +156,23 @@ class UserController {
     } // Closing getValues
 
     selectAll() {
-
         let users = User.getUsersStorage();
 
         users.forEach(dataUser => {
-
             let user = new User();
 
             user.loadFromJSON(dataUser);
 
             this.addLine(user);
-
         });
-
     } // Closing selectAll
 
     addLine (dataUser) {   
-        
         let tr = this.getTr(dataUser);      
 
         this.tableEl.appendChild(tr);
 
         this.updateCount();
-
     } // Closing addLine
 
     getTr(dataUser, tr = null) {
@@ -203,11 +197,8 @@ class UserController {
     }
 
     addEventsTr (tr) {
-
         tr.querySelector(".btn-delete").addEventListener("click", e => { 
-
             if (confirm("Deseja realmente excluir?")) {
-
                 let user = new User();
 
                 user.loadFromJSON(JSON.parse(tr.dataset.user));
@@ -216,7 +207,6 @@ class UserController {
                 tr.remove();
                 this.updateCount();
             }
-
         });
 
         tr.querySelector(".btn-edit").addEventListener("click", e => {
@@ -279,5 +269,4 @@ class UserController {
         document.querySelector("#number-users").innerHTML = numberUsers;
         document.querySelector("#number-users-admins").innerHTML = numberAdmins;
     } // Closing updateCount
-
 }
